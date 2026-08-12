@@ -47,10 +47,19 @@ class main:
 
             oldMousePressed = mousePressed
 
+            match self.menu:
+                case "main":
+                    pass
+                case "game":
+
+
+                    self.drawBoard()
 
             pygame.display.flip()
             self.clock.tick(60)
 
+    def drawBoard(self):
+        pass
 
 
 if __name__ == "__main__":
