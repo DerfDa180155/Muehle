@@ -31,6 +31,11 @@ class main:
                     if event.key == pygame.K_ESCAPE: # Quit the Game
                         if self.menu == "main":
                             self.running = False
+                        elif self.menu == "game":
+                            self.menu = "main"
+                    elif event.key == pygame.K_SPACE:
+                        if self.menu == "main":
+                            self.menu = "game"
 
             self.windowWidth = self.screen.get_width()
             self.windowHeight = self.screen.get_height()
