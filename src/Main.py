@@ -19,6 +19,8 @@ class main:
 
         self.menu = "main"
 
+        self.board = []
+
         self.run()
 
     def run(self):
@@ -64,7 +66,19 @@ class main:
             self.clock.tick(60)
 
     def drawBoard(self):
-        pass
+        for y in range(len(self.board)):
+            for x in range(len(self.board[y])):
+                match self.board[y][x]:
+                    case "o":
+                        pass
+                    case "w":
+                        pass
+                    case "b":
+                        pass
+                    case "-":
+                        pass
+                    case "|":
+                        pass
 
 
 if __name__ == "__main__":
