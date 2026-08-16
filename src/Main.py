@@ -72,14 +72,19 @@ class main:
                 case "game":
 
 
-                    self.drawBoard()
+                    self.drawBoard(100, 100, 500, 500)
 
             pygame.display.flip()
             self.clock.tick(60)
 
-    def drawBoard(self):
+    def drawBoard(self, posX, posY, sizeX, sizeY):
+        lenX = len(self.board[0])
+        lenY = len(self.board)
+
         for y in range(len(self.board)):
             for x in range(len(self.board[y])):
+                curX = posX + x * (sizeX/lenX)
+                curY = posY + y * (sizeY/lenY)
                 match self.board[y][x]:
                     case "o":
                         pass
