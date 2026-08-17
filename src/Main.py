@@ -83,15 +83,18 @@ class main:
 
         for y in range(len(self.board)):
             for x in range(len(self.board[y])):
+                color = (125, 125, 125)
+
                 curX = posX + x * (sizeX/lenX)
                 curY = posY + y * (sizeY/lenY)
+
                 match self.board[y][x]:
                     case "o":
                         pass
                     case "w":
-                        pass
+                        color = (255, 255, 255)
                     case "b":
-                        pass
+                        color = (10, 10, 10)
                     case "-":
                         pass
                     case "|":
