@@ -90,7 +90,7 @@ class main:
 
                 match self.board[y][x]:
                     case "o":
-                        pass
+                        pygame.draw.circle(self.screen, color, (curX+(sizeX/lenX)/2, curY+(sizeY/lenY)/2), sizeX/lenX/2)
                     case "w":
                         color = (255, 255, 255)
                     case "b":
