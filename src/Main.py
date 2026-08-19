@@ -85,18 +85,21 @@ class main:
             for x in range(len(self.board[y])):
                 color = (125, 125, 125)
 
-                curX = posX + x * (sizeX/lenX)
-                curY = posY + y * (sizeY/lenY)
+                oneX = int(sizeX/lenX)
+                oneY = int(sizeY/lenY)
+
+                curX = posX + x * oneX
+                curY = posY + y * oneY
 
                 match self.board[y][x]:
                     case "o":
-                        pygame.draw.circle(self.screen, color, (curX+(sizeX/lenX)/2, curY+(sizeY/lenY)/2), sizeX/lenX/2)
+                        pygame.draw.circle(self.screen, color, (curX+(oneX/2), curY+(oneY/2)), oneX/2)
                     case "w":
                         color = (255, 255, 255)
                     case "b":
                         color = (10, 10, 10)
                     case "-":
-                        pass
+                        pygame.draw.rect(self.screen, color, (curX+(oneX/2), curY, oneX+1, 10))
                     case "|":
                         pass
 
