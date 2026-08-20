@@ -91,6 +91,8 @@ class main:
                 curX = posX + x * oneX
                 curY = posY + y * oneY
 
+                thickness = int(oneX/4)
+
                 match self.board[y][x]:
                     case "o":
                         pygame.draw.circle(self.screen, color, (curX+(oneX/2), curY+(oneY/2)), oneX/2)
@@ -99,9 +101,9 @@ class main:
                     case "b":
                         color = (10, 10, 10)
                     case "-":
-                        pygame.draw.rect(self.screen, color, (curX+(oneX/2), curY, oneX+1, 10))
+                        pygame.draw.rect(self.screen, color, (curX-2, curY+(oneY/2)-(thickness/2), oneX+4, thickness))
                     case "|":
-                        pass
+                        pygame.draw.rect(self.screen, color, (curX+(oneX/2)-(thickness/2), curY-2, thickness, oneY+4))
 
 
 if __name__ == "__main__":
