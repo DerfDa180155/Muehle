@@ -98,12 +98,14 @@ class main:
                         pygame.draw.circle(self.screen, color, (curX+(oneX/2), curY+(oneY/2)), oneX/2)
                     case "w":
                         color = (255, 255, 255)
+                        pygame.draw.circle(self.screen, color, (curX+(oneX/2), curY+(oneY/2)), oneX/1.5)
                     case "b":
                         color = (10, 10, 10)
+                        pygame.draw.circle(self.screen, color, (curX + (oneX/2), curY+(oneY/2)), oneX/1.5)
                     case "-":
-                        pygame.draw.rect(self.screen, color, (curX-2, curY+(oneY/2)-(thickness/2), oneX+4, thickness))
+                        pygame.draw.rect(self.screen, color, (curX-1, curY+(oneY/2)-(thickness/2), oneX+2, thickness))
                     case "|":
-                        pygame.draw.rect(self.screen, color, (curX+(oneX/2)-(thickness/2), curY-2, thickness, oneY+4))
+                        pygame.draw.rect(self.screen, color, (curX+(oneX/2)-(thickness/2), curY-1, thickness, oneY+2))
 
 
 if __name__ == "__main__":
