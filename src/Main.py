@@ -96,16 +96,26 @@ class main:
                 match self.board[y][x]:
                     case "o":
                         pygame.draw.circle(self.screen, color, (curX+(oneX/2), curY+(oneY/2)), oneX/2)
+                    case "-":
+                        pygame.draw.rect(self.screen, color, (curX-1, curY+(oneY/2)-(thickness/2), oneX+2, thickness))
+                    case "|":
+                        pygame.draw.rect(self.screen, color, (curX+(oneX/2)-(thickness/2), curY-1, thickness, oneY+2))
+
+        for y in range(len(self.board)):
+            for x in range(len(self.board[y])):
+                oneX = int(sizeX/lenX)
+                oneY = int(sizeY/lenY)
+
+                curX = posX + x * oneX
+                curY = posY + y * oneY
+
+                match self.board[y][x]:
                     case "w":
                         color = (255, 255, 255)
                         pygame.draw.circle(self.screen, color, (curX+(oneX/2), curY+(oneY/2)), oneX/1.5)
                     case "b":
                         color = (10, 10, 10)
                         pygame.draw.circle(self.screen, color, (curX + (oneX/2), curY+(oneY/2)), oneX/1.5)
-                    case "-":
-                        pygame.draw.rect(self.screen, color, (curX-1, curY+(oneY/2)-(thickness/2), oneX+2, thickness))
-                    case "|":
-                        pygame.draw.rect(self.screen, color, (curX+(oneX/2)-(thickness/2), curY-1, thickness, oneY+2))
 
 
 if __name__ == "__main__":
