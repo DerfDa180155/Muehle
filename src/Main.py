@@ -1,4 +1,5 @@
 import pygame
+import Muehle
 
 class main:
     def __init__(self):
@@ -19,19 +20,7 @@ class main:
 
         self.menu = "main"
 
-        self.board = [["o", "-", "-", "-", "-", "-", "o", "-", "-", "-", "-", "-", "o"],
-                      ["|", "", "", "", "", "", "|", "", "", "", "", "", "|"],
-                      ["|", "", "o", "-", "-", "-", "o", "-", "-", "-", "o", "", "|"],
-                      ["|", "", "|", "", "", "", "|", "", "", "", "|", "", "|"],
-                      ["|", "", "|", "", "o", "-", "o", "-", "o", "", "|", "", "|"],
-                      ["|", "", "|", "", "|", "", "", "", "|", "", "|", "", "|",],
-                      ["o", "-", "o", "-", "o", "", "", "", "o", "-", "o", "-", "o"],
-                      ["|", "", "|", "", "|", "", "", "", "|", "", "|", "", "|", ],
-                      ["|", "", "|", "", "o", "-", "o", "-", "o", "", "|", "", "|"],
-                      ["|", "", "|", "", "", "", "|", "", "", "", "|", "", "|"],
-                      ["|", "", "o", "-", "-", "-", "o", "-", "-", "-", "o", "", "|"],
-                      ["|", "", "", "", "", "", "|", "", "", "", "", "", "|"],
-                      ["o", "-", "-", "-", "-", "-", "o", "-", "-", "-", "-", "-", "o"]]
+        self.muehle = Muehle.Muehle()
 
         self.run()
 
@@ -78,11 +67,11 @@ class main:
             self.clock.tick(60)
 
     def drawBoard(self, posX, posY, sizeX, sizeY):
-        lenX = len(self.board[0])
-        lenY = len(self.board)
+        lenX = len(self.muehle.board[0])
+        lenY = len(self.muehle.board)
 
-        for y in range(len(self.board)):
-            for x in range(len(self.board[y])):
+        for y in range(len(self.muehle.board)):
+            for x in range(len(self.muehle.board[y])):
                 color = (125, 125, 125)
 
                 oneX = int(sizeX/lenX)
@@ -93,7 +82,7 @@ class main:
 
                 thickness = int(oneX/4)
 
-                match self.board[y][x]:
+                match self.muehle.board[y][x]:
                     case "o":
                         pygame.draw.circle(self.screen, color, (curX+(oneX/2), curY+(oneY/2)), oneX/2)
                     case "-":
@@ -101,15 +90,15 @@ class main:
                     case "|":
                         pygame.draw.rect(self.screen, color, (curX+(oneX/2)-(thickness/2), curY-1, thickness, oneY+2))
 
-        for y in range(len(self.board)):
-            for x in range(len(self.board[y])):
+        for y in range(len(self.muehle.board)):
+            for x in range(len(self.muehle.board[y])):
                 oneX = int(sizeX/lenX)
                 oneY = int(sizeY/lenY)
 
                 curX = posX + x * oneX
                 curY = posY + y * oneY
 
-                match self.board[y][x]:
+                match self.muehle.board[y][x]:
                     case "w":
                         color = (255, 255, 255)
                         pygame.draw.circle(self.screen, color, (curX+(oneX/2), curY+(oneY/2)), oneX/1.5)
