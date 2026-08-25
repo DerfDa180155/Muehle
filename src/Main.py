@@ -61,7 +61,7 @@ class main:
                 case "game":
 
 
-                    self.drawBoard(100, 100, 500, 500)
+                    self.drawBoard(200, 200, 1100, 1100)
 
             pygame.display.flip()
             self.clock.tick(60)
