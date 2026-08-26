@@ -57,11 +57,21 @@ class main:
 
             match self.menu:
                 case "main":
-                    pass
+                    font = pygame.font.Font(pygame.font.get_default_font(), 50)
+                    text = font.render("Mühle", True, (255,255,255))
+                    newRect = text.get_rect()
+                    newRect.centerx = self.windowWidth/2
+                    newRect.centery = 50
+                    self.screen.blit(text, newRect)
                 case "game":
+                    font = pygame.font.Font(pygame.font.get_default_font(), 50)
+                    text = font.render("Game", True, (255, 255, 255))
+                    newRect = text.get_rect()
+                    newRect.centerx = self.windowWidth / 2
+                    newRect.centery = 50
+                    self.screen.blit(text, newRect)
 
-
-                    self.drawBoard(200, 200, 1100, 1100)
+                    self.drawBoard(200, 150, 1100, 1100)
 
             pygame.display.flip()
             self.clock.tick(60)
