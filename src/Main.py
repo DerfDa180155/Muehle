@@ -34,11 +34,11 @@ class main:
                     if event.key == pygame.K_ESCAPE: # Quit the Game
                         if self.menu == "main":
                             self.running = False
-                        elif self.menu == "game":
+                        elif self.menu in ["bot", "2player"]:
                             self.menu = "main"
                     elif event.key == pygame.K_SPACE:
                         if self.menu == "main":
-                            self.menu = "game"
+                            self.menu = "bot"
 
             self.windowWidth = self.screen.get_width()
             self.windowHeight = self.screen.get_height()
@@ -63,9 +63,18 @@ class main:
                     newRect.centerx = self.windowWidth/2
                     newRect.centery = 50
                     self.screen.blit(text, newRect)
-                case "game":
+                case "bot":
                     font = pygame.font.Font(pygame.font.get_default_font(), 50)
-                    text = font.render("Game", True, (255, 255, 255))
+                    text = font.render("Bot", True, (255, 255, 255))
+                    newRect = text.get_rect()
+                    newRect.centerx = self.windowWidth / 2
+                    newRect.centery = 50
+                    self.screen.blit(text, newRect)
+
+                    self.drawBoard(200, 150, 1100, 1100)
+                case "2player":
+                    font = pygame.font.Font(pygame.font.get_default_font(), 50)
+                    text = font.render("2 Player", True, (255, 255, 255))
                     newRect = text.get_rect()
                     newRect.centerx = self.windowWidth / 2
                     newRect.centery = 50
