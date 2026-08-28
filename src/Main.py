@@ -22,6 +22,10 @@ class main:
 
         self.muehle = Muehle.Muehle()
 
+        self.mainButtons = []
+        self.botButtons = []
+        self.playerButtons = []
+
         self.run()
 
     def run(self):
@@ -63,6 +67,19 @@ class main:
                     newRect.centerx = self.windowWidth/2
                     newRect.centery = 50
                     self.screen.blit(text, newRect)
+
+                    for button in self.mainButtons:
+                        button.update()
+                        button.draw()
+
+                        if button.click():
+                            match button.onClick:
+                                case "bot":
+                                    self.menu = "bot"
+                                case "2player":
+                                    self.menu = "2player"
+                                case "quit":
+                                    pass
                 case "bot":
                     font = pygame.font.Font(pygame.font.get_default_font(), 50)
                     text = font.render("Bot", True, (255, 255, 255))
