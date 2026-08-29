@@ -1,5 +1,7 @@
 import pygame
+
 import Muehle
+import Button
 
 class main:
     def __init__(self):
@@ -22,7 +24,7 @@ class main:
 
         self.muehle = Muehle.Muehle()
 
-        self.mainButtons = []
+        self.mainButtons = [Button.Button(self.screen, 100, 100, 100, 100, (255, 255, 255), "PlayBot")]
         self.botButtons = []
         self.playerButtons = []
 
@@ -69,12 +71,11 @@ class main:
                     self.screen.blit(text, newRect)
 
                     for button in self.mainButtons:
-                        button.update()
                         button.draw()
 
-                        if button.click():
+                        if button.clicked(mx, my, mousePressedUp):
                             match button.onClick:
-                                case "bot":
+                                case "PlayBot":
                                     self.menu = "bot"
                                 case "2player":
                                     self.menu = "2player"
