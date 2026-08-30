@@ -24,7 +24,9 @@ class main:
 
         self.muehle = Muehle.Muehle()
 
-        self.mainButtons = [Button.Button(self.screen, 100, 100, 100, 100, (255, 255, 255), "PlayBot")]
+        self.mainButtons = [Button.Button(self.screen, 150, 200, 1200, 200, (125, 125, 125), "1 Player"),
+                            Button.Button(self.screen, 150, 550, 1200, 200, (125, 125, 125), "2 Player"),
+                            Button.Button(self.screen, 150, 900, 1200, 200, (125, 125, 125), "Quit")]
         self.botButtons = []
         self.playerButtons = []
 
@@ -75,12 +77,12 @@ class main:
 
                         if button.clicked(mx, my, mousePressedUp):
                             match button.onClick:
-                                case "PlayBot":
+                                case "1 Player":
                                     self.menu = "bot"
-                                case "2player":
+                                case "2 Player":
                                     self.menu = "2player"
-                                case "quit":
-                                    pass
+                                case "Quit":
+                                    self.running = False
                 case "bot":
                     font = pygame.font.Font(pygame.font.get_default_font(), 50)
                     text = font.render("Bot", True, (255, 255, 255))
