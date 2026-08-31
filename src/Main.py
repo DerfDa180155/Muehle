@@ -24,9 +24,9 @@ class main:
 
         self.muehle = Muehle.Muehle()
 
-        self.mainButtons = [Button.Button(self.screen, 150, 200, 1200, 200, (125, 125, 125), "1 Player"),
-                            Button.Button(self.screen, 150, 550, 1200, 200, (125, 125, 125), "2 Player"),
-                            Button.Button(self.screen, 150, 900, 1200, 200, (125, 125, 125), "Quit")]
+        self.mainButtons = [Button.Button(self.screen, 150, 250, 1200, 200, (125, 125, 125), "1 Player"),
+                            Button.Button(self.screen, 150, 600, 1200, 200, (125, 125, 125), "2 Player"),
+                            Button.Button(self.screen, 150, 950, 1200, 200, (125, 125, 125), "Quit")]
         self.botButtons = []
         self.playerButtons = []
 
@@ -65,11 +65,11 @@ class main:
 
             match self.menu:
                 case "main":
-                    font = pygame.font.Font(pygame.font.get_default_font(), 50)
+                    font = pygame.font.Font(pygame.font.get_default_font(), 100)
                     text = font.render("Mühle", True, (255,255,255))
                     newRect = text.get_rect()
                     newRect.centerx = self.windowWidth/2
-                    newRect.centery = 50
+                    newRect.centery = 100
                     self.screen.blit(text, newRect)
 
                     for button in self.mainButtons:

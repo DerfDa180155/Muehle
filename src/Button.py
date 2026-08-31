@@ -15,6 +15,13 @@ class Button:
     def draw(self):
         pygame.draw.rect(self.screen, self.color, (self.x, self.y, self.width, self.height))
 
+        font = pygame.font.Font(pygame.font.get_default_font(), 50)
+        text = font.render(self.onClick, True, (255, 255, 255))
+        newRect = text.get_rect()
+        newRect.centerx = self.x + self.width/2
+        newRect.centery = self.y + self.height/2
+        self.screen.blit(text, newRect)
+
     def clicked(self, mx, my, mouseClick):
         return self.hover(mx, my) and mouseClick[0]
 
