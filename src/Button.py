@@ -12,11 +12,11 @@ class Button:
 
         self.isHovered = False
 
-    def draw(self):
+    def draw(self, textColor=(255, 255, 255)):
         pygame.draw.rect(self.screen, self.color, (self.x, self.y, self.width, self.height))
 
         font = pygame.font.Font(pygame.font.get_default_font(), 50)
-        text = font.render(self.onClick, True, (255, 255, 255))
+        text = font.render(self.onClick, True, textColor)
         newRect = text.get_rect()
         newRect.centerx = self.x + self.width/2
         newRect.centery = self.y + self.height/2

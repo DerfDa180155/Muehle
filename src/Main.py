@@ -24,11 +24,16 @@ class main:
 
         self.muehle = Muehle.Muehle()
 
-        self.mainButtons = [Button.Button(self.screen, 150, 250, 1200, 200, (125, 125, 125), "1 Player"),
-                            Button.Button(self.screen, 150, 600, 1200, 200, (125, 125, 125), "2 Player"),
-                            Button.Button(self.screen, 150, 950, 1200, 200, (125, 125, 125), "Quit")]
+        self.mainButtons = [Button.Button(self.screen, 150, 250, 1200, 200, (125, 90, 51), "1 Player"),
+                            Button.Button(self.screen, 150, 600, 1200, 200, (125, 90, 51), "2 Player"),
+                            Button.Button(self.screen, 150, 950, 1200, 200, (125, 90, 51), "Quit")]
         self.botButtons = []
         self.playerButtons = []
+
+
+        self.backgroundColor = (133, 101, 66)
+        self.headingColor = (82, 55, 26)
+        self.baseColor = (102, 69, 32)
 
         self.run()
 
@@ -42,16 +47,16 @@ class main:
                     if event.key == pygame.K_ESCAPE: # Quit the Game
                         if self.menu == "main":
                             self.running = False
-                        elif self.menu in ["bot", "2player"]:
+                        elif self.menu in ["1player", "2player"]:
                             self.menu = "main"
                     elif event.key == pygame.K_SPACE:
                         if self.menu == "main":
-                            self.menu = "bot"
+                            self.menu = "1player"
 
             self.windowWidth = self.screen.get_width()
             self.windowHeight = self.screen.get_height()
 
-            self.screen.fill((50, 50, 50))
+            self.screen.fill(self.backgroundColor)
 
             mx, my = pygame.mouse.get_pos()
             mousePressed = pygame.mouse.get_pressed()
@@ -66,38 +71,38 @@ class main:
             match self.menu:
                 case "main":
                     font = pygame.font.Font(pygame.font.get_default_font(), 100)
-                    text = font.render("Mühle", True, (255,255,255))
+                    text = font.render("Mühle", True, self.headingColor)
                     newRect = text.get_rect()
                     newRect.centerx = self.windowWidth/2
                     newRect.centery = 100
                     self.screen.blit(text, newRect)
 
                     for button in self.mainButtons:
-                        button.draw()
+                        button.draw(textColor=self.headingColor)
 
                         if button.clicked(mx, my, mousePressedUp):
                             match button.onClick:
                                 case "1 Player":
-                                    self.menu = "bot"
+                                    self.menu = "1player"
                                 case "2 Player":
                                     self.menu = "2player"
                                 case "Quit":
                                     self.running = False
-                case "bot":
-                    font = pygame.font.Font(pygame.font.get_default_font(), 50)
-                    text = font.render("Bot", True, (255, 255, 255))
+                case "1player":
+                    font = pygame.font.Font(pygame.font.get_default_font(), 70)
+                    text = font.render("1 Player", True, self.headingColor)
                     newRect = text.get_rect()
                     newRect.centerx = self.windowWidth / 2
-                    newRect.centery = 50
+                    newRect.centery = 70
                     self.screen.blit(text, newRect)
 
                     self.drawBoard(200, 150, 1100, 1100)
                 case "2player":
-                    font = pygame.font.Font(pygame.font.get_default_font(), 50)
-                    text = font.render("2 Player", True, (255, 255, 255))
+                    font = pygame.font.Font(pygame.font.get_default_font(), 70)
+                    text = font.render("2 Player", True, self.headingColor)
                     newRect = text.get_rect()
                     newRect.centerx = self.windowWidth / 2
-                    newRect.centery = 50
+                    newRect.centery = 70
                     self.screen.blit(text, newRect)
 
                     self.drawBoard(200, 150, 1100, 1100)
@@ -111,7 +116,7 @@ class main:
 
         for y in range(len(self.muehle.board)):
             for x in range(len(self.muehle.board[y])):
-                color = (125, 125, 125)
+                color = self.baseColor
 
                 oneX = int(sizeX/lenX)
                 oneY = int(sizeY/lenY)
