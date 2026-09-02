@@ -51,6 +51,7 @@ class main:
                             self.menu = "main"
                     elif event.key == pygame.K_SPACE:
                         if self.menu == "main":
+                            self.muehle.reset()
                             self.menu = "1player"
 
             self.windowWidth = self.screen.get_width()
@@ -83,8 +84,10 @@ class main:
                         if button.clicked(mx, my, mousePressedUp):
                             match button.onClick:
                                 case "1 Player":
+                                    self.muehle.reset()
                                     self.menu = "1player"
                                 case "2 Player":
+                                    self.muehle.reset()
                                     self.menu = "2player"
                                 case "Quit":
                                     self.running = False

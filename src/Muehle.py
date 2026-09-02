@@ -3,7 +3,6 @@ import pygame
 
 class Muehle:
     def __init__(self):
-        self.board = []
         self.board = self.generateEmptyBoard()
 
     def generateEmptyBoard(self):
@@ -20,3 +19,6 @@ class Muehle:
                 ["|", "", "o", "-", "-", "-", "o", "-", "-", "-", "o", "", "|"],
                 ["|", "", "", "", "", "", "|", "", "", "", "", "", "|"],
                 ["o", "-", "-", "-", "-", "-", "o", "-", "-", "-", "-", "-", "o"]]
+
+    def reset(self):
+        self.board = self.generateEmptyBoard()
