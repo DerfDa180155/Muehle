@@ -22,3 +22,8 @@ class Muehle:
 
     def reset(self):
         self.board = self.generateEmptyBoard()
+
+    def place(self, x, y, color):
+        self.board[y][x] = color
+
+
