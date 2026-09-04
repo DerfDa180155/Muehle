@@ -4,6 +4,7 @@ import pygame
 class Muehle:
     def __init__(self):
         self.board = self.generateEmptyBoard()
+        self.phase = 0
 
     def generateEmptyBoard(self):
         return [["o", "-", "-", "-", "-", "-", "o", "-", "-", "-", "-", "-", "o"],
@@ -22,8 +23,10 @@ class Muehle:
 
     def reset(self):
         self.board = self.generateEmptyBoard()
+        self.phase = 0
 
     def place(self, x, y, color):
         self.board[y][x] = color
 
-
+    def take(self, x, y):
+        self.board[y][x] = "o"
