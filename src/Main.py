@@ -117,6 +117,8 @@ class main:
         lenX = len(self.muehle.board[0])
         lenY = len(self.muehle.board)
 
+        positions = []
+
         for y in range(len(self.muehle.board)):
             for x in range(len(self.muehle.board[y])):
                 color = self.baseColor
@@ -149,9 +151,13 @@ class main:
                     case "w":
                         color = (255, 255, 255)
                         pygame.draw.circle(self.screen, color, (curX+(oneX/2), curY+(oneY/2)), oneX/1.5)
+                        positions.append([curX+(oneX/2), curY+(oneY/2)])
                     case "b":
                         color = (10, 10, 10)
                         pygame.draw.circle(self.screen, color, (curX + (oneX/2), curY+(oneY/2)), oneX/1.5)
+                        positions.append([curX + (oneX / 2), curY + (oneY / 2)])
+
+        return positions
 
 
 if __name__ == "__main__":
