@@ -99,7 +99,14 @@ class main:
                     newRect.centery = 70
                     self.screen.blit(text, newRect)
 
-                    self.drawBoard(200, 150, 1100, 1100)
+                    positions = self.drawBoard(200, 150, 1100, 1100)
+
+                    self.playerButtons = []
+                    for position in positions:
+                        self.playerButtons.append(Button.Button(self.screen, position[1], position[0], 10, 10, (255,255,255), "test"))
+
+                    for button in self.playerButtons:
+                        button.draw()
                 case "2player":
                     font = pygame.font.Font(pygame.font.get_default_font(), 70)
                     text = font.render("2 Player", True, self.headingColor)
@@ -108,7 +115,7 @@ class main:
                     newRect.centery = 70
                     self.screen.blit(text, newRect)
 
-                    self.drawBoard(200, 150, 1100, 1100)
+                    positions = self.drawBoard(200, 150, 1100, 1100)
 
             pygame.display.flip()
             self.clock.tick(60)
@@ -134,6 +141,7 @@ class main:
                 match self.muehle.board[y][x]:
                     case "o":
                         pygame.draw.circle(self.screen, color, (curX+(oneX/2), curY+(oneY/2)), oneX/2)
+                        positions.append([curX + (oneX / 2), curY + (oneY / 2)])
                     case "-":
                         pygame.draw.rect(self.screen, color, (curX-1, curY+(oneY/2)-(thickness/2), oneX+2, thickness))
                     case "|":
