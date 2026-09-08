@@ -103,7 +103,8 @@ class main:
 
                     self.playerButtons = []
                     for position in positions:
-                        self.playerButtons.append(Button.Button(self.screen, position[1], position[0], 10, 10, (255,255,255), "test"))
+                        print(position)
+                        self.playerButtons.append(Button.Button(self.screen, position[0], position[1], position[2]-position[0], position[3]-position[1], (255,255,255), "test"))
 
                     for button in self.playerButtons:
                         button.draw()
@@ -141,7 +142,7 @@ class main:
                 match self.muehle.board[y][x]:
                     case "o":
                         pygame.draw.circle(self.screen, color, (curX+(oneX/2), curY+(oneY/2)), oneX/2)
-                        positions.append([curX + (oneX / 2), curY + (oneY / 2)])
+                        positions.append([curX, curY, curX+oneX, curY+oneY])
                     case "-":
                         pygame.draw.rect(self.screen, color, (curX-1, curY+(oneY/2)-(thickness/2), oneX+2, thickness))
                     case "|":
@@ -159,11 +160,11 @@ class main:
                     case "w":
                         color = (255, 255, 255)
                         pygame.draw.circle(self.screen, color, (curX+(oneX/2), curY+(oneY/2)), oneX/1.5)
-                        positions.append([curX+(oneX/2), curY+(oneY/2)])
+                        positions.append([curX, curY, curX+oneX, curY+oneY])
                     case "b":
                         color = (10, 10, 10)
                         pygame.draw.circle(self.screen, color, (curX + (oneX/2), curY+(oneY/2)), oneX/1.5)
-                        positions.append([curX + (oneX / 2), curY + (oneY / 2)])
+                        positions.append([curX, curY, curX+oneX, curY+oneY])
 
         return positions
 
