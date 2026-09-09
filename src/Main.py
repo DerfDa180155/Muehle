@@ -102,12 +102,15 @@ class main:
                     positions = self.drawBoard(200, 150, 1100, 1100)
 
                     self.playerButtons = []
+                    counter = 0
                     for position in positions:
-                        print(position)
-                        self.playerButtons.append(Button.Button(self.screen, position[0], position[1], position[2]-position[0], position[3]-position[1], (255,255,255), "test"))
+                        self.playerButtons.append(Button.Button(self.screen, position[0], position[1], position[2]-position[0], position[3]-position[1], (255,255,255), str(counter)))
+                        counter += 1
 
                     for button in self.playerButtons:
                         button.draw()
+                        if button.clicked(mx=mx, my=my, mouseClick=mousePressedUp):
+                            print(button.onClick)
                 case "2player":
                     font = pygame.font.Font(pygame.font.get_default_font(), 70)
                     text = font.render("2 Player", True, self.headingColor)
