@@ -27,7 +27,6 @@ class main:
         self.mainButtons = [Button.Button(self.screen, 150, 250, 1200, 200, (125, 90, 51), "1 Player"),
                             Button.Button(self.screen, 150, 600, 1200, 200, (125, 90, 51), "2 Player"),
                             Button.Button(self.screen, 150, 950, 1200, 200, (125, 90, 51), "Quit")]
-        self.botButtons = []
         self.playerButtons = []
 
 
@@ -120,6 +119,19 @@ class main:
                     self.screen.blit(text, newRect)
 
                     positions = self.drawBoard(200, 150, 1100, 1100)
+
+                    self.playerButtons = []
+                    counter = 0
+                    for position in positions:
+                        self.playerButtons.append(
+                            Button.Button(self.screen, position[0], position[1], position[2] - position[0],
+                                          position[3] - position[1], (255, 255, 255), str(counter)))
+                        counter += 1
+
+                    for button in self.playerButtons:
+                        button.draw()
+                        if button.clicked(mx=mx, my=my, mouseClick=mousePressedUp):
+                            print(button.onClick)
 
             pygame.display.flip()
             self.clock.tick(60)
