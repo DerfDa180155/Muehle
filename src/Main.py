@@ -99,6 +99,15 @@ class main:
                     self.screen.blit(text, newRect)
 
                     positions = self.drawBoard(200, 150, 1100, 1100)
+                    positionList = [
+                        (0, 0), (0, 6), (0, 12),
+                        (2, 2), (2, 6), (2, 10),
+                        (4, 4), (4, 6), (4, 8),
+                        (6, 0), (6, 2), (6, 4), (6, 8), (6, 10), (6, 12),
+                        (8, 4), (8, 6), (8, 8),
+                        (10, 2), (10, 6), (10, 10),
+                        (12, 0), (12, 6), (12, 12)
+                    ]
 
                     self.playerButtons = []
                     counter = 0
@@ -107,8 +116,9 @@ class main:
                         counter += 1
 
                     for button in self.playerButtons:
-                        button.draw()
+                        #button.draw()
                         if button.clicked(mx=mx, my=my, mouseClick=mousePressedUp):
+                            self.muehle.place(positionList[int(button.onClick)][1], positionList[int(button.onClick)][0], "w")
                             print(button.onClick)
                 case "2player":
                     font = pygame.font.Font(pygame.font.get_default_font(), 70)
