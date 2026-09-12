@@ -116,7 +116,6 @@ class main:
                         counter += 1
 
                     for button in self.playerButtons:
-                        #button.draw()
                         if button.clicked(mx=mx, my=my, mouseClick=mousePressedUp):
                             self.muehle.place(positionList[int(button.onClick)][1], positionList[int(button.onClick)][0], "w")
                             print(button.onClick)
@@ -139,7 +138,6 @@ class main:
                         counter += 1
 
                     for button in self.playerButtons:
-                        button.draw()
                         if button.clicked(mx=mx, my=my, mouseClick=mousePressedUp):
                             print(button.onClick)
 
@@ -172,6 +170,11 @@ class main:
                         pygame.draw.rect(self.screen, color, (curX-1, curY+(oneY/2)-(thickness/2), oneX+2, thickness))
                     case "|":
                         pygame.draw.rect(self.screen, color, (curX+(oneX/2)-(thickness/2), curY-1, thickness, oneY+2))
+                    case "w":
+                        positions.append([curX, curY, curX + oneX, curY + oneY])
+                    case "b":
+                        positions.append([curX, curY, curX + oneX, curY + oneY])
+
 
         for y in range(len(self.muehle.board)):
             for x in range(len(self.muehle.board[y])):
@@ -185,11 +188,9 @@ class main:
                     case "w":
                         color = (255, 255, 255)
                         pygame.draw.circle(self.screen, color, (curX+(oneX/2), curY+(oneY/2)), oneX/1.5)
-                        positions.append([curX, curY, curX+oneX, curY+oneY])
                     case "b":
                         color = (10, 10, 10)
                         pygame.draw.circle(self.screen, color, (curX + (oneX/2), curY+(oneY/2)), oneX/1.5)
-                        positions.append([curX, curY, curX+oneX, curY+oneY])
 
         return positions
 
