@@ -30,6 +30,9 @@ class Muehle:
     def place(self, x, y, color):
         self.board[y][x] = color
 
+    def placeCurrentPlayer(self, x, y):
+        self.place(x, y, self.playerTurn)
+
     def take(self, x, y):
         self.board[y][x] = "o"
 
