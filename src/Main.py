@@ -118,6 +118,7 @@ class main:
                     for button in self.playerButtons:
                         if button.clicked(mx=mx, my=my, mouseClick=mousePressedUp):
                             self.muehle.placeCurrentPlayer(positionList[int(button.onClick)][1], positionList[int(button.onClick)][0])
+                            self.muehle.update()
                             print(button.onClick)
                 case "2player":
                     font = pygame.font.Font(pygame.font.get_default_font(), 70)
