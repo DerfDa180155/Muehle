@@ -36,11 +36,12 @@ class Muehle:
     def take(self, x, y):
         self.board[y][x] = "o"
 
-    def update(self):
+    def update(self, x, y):
 
+        if self.board[y][x] == "o":
+            self.placeCurrentPlayer(x, y)
 
-
-        if self.playerTurn == "w":
-            self.playerTurn = "b"
-        elif self.playerTurn == "b":
-            self.playerTurn = "w"
+            if self.playerTurn == "w":
+                self.playerTurn = "b"
+            elif self.playerTurn == "b":
+                self.playerTurn = "w"
