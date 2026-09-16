@@ -36,12 +36,18 @@ class Muehle:
     def take(self, x, y):
         self.board[y][x] = "o"
 
+    def togglePlayerTurn(self):
+        if self.playerTurn == "w":
+            self.playerTurn = "b"
+        elif self.playerTurn == "b":
+            self.playerTurn = "w"
+
     def update(self, x, y):
+        match self.phase:
+            case 0: # place
+                if self.board[y][x] == "o":
+                    self.placeCurrentPlayer(x, y)
 
-        if self.board[y][x] == "o":
-            self.placeCurrentPlayer(x, y)
-
-            if self.playerTurn == "w":
-                self.playerTurn = "b"
-            elif self.playerTurn == "b":
-                self.playerTurn = "w"
+                    self.togglePlayerTurn()
+            case 1: # move
+                pass
