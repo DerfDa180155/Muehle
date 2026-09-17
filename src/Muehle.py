@@ -8,6 +8,8 @@ class Muehle:
         self.phase = 0
         self.playerTurn = "w"
 
+        self.placeCounter = 0
+
     def generateEmptyBoard(self):
         return [["o", "-", "-", "-", "-", "-", "o", "-", "-", "-", "-", "-", "o"],
                 ["|", "", "", "", "", "", "|", "", "", "", "", "", "|"],
@@ -25,7 +27,11 @@ class Muehle:
 
     def reset(self):
         self.board = self.generateEmptyBoard()
+
         self.phase = 0
+        self.playerTurn = "w"
+
+        self.placeCounter = 0
 
     def place(self, x, y, color):
         self.board[y][x] = color
@@ -49,5 +55,8 @@ class Muehle:
                     self.placeCurrentPlayer(x, y)
 
                     self.togglePlayerTurn()
+                    self.placeCounter += 1
+                    if self.placeCounter == 18:
+                        self.phase = 1
             case 1: # move
                 pass
