@@ -9,6 +9,7 @@ class Muehle:
         self.playerTurn = "w"
 
         self.placeCounter = 0
+        self.playerPieceCounter = [0, 0]
 
     def generateEmptyBoard(self):
         return [["o", "-", "-", "-", "-", "-", "o", "-", "-", "-", "-", "-", "o"],
@@ -32,12 +33,17 @@ class Muehle:
         self.playerTurn = "w"
 
         self.placeCounter = 0
+        self.playerPieceCounter = [0, 0]
 
     def place(self, x, y, color):
         self.board[y][x] = color
 
     def placeCurrentPlayer(self, x, y):
         self.place(x, y, self.playerTurn)
+        if self.playerTurn == "w":
+            self.playerPieceCounter[0] += 1
+        else:
+            self.playerPieceCounter[1] += 1
 
     def take(self, x, y):
         self.board[y][x] = "o"
