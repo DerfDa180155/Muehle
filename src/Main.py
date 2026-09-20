@@ -98,6 +98,7 @@ class main:
                     newRect.centery = 70
                     self.screen.blit(text, newRect)
 
+                    self.drawInfoText()
                     positions = self.drawBoard(200, 150, 1100, 1100)
                     positionList = [
                         (0, 0), (0, 6), (0, 12),
@@ -127,6 +128,7 @@ class main:
                     newRect.centery = 70
                     self.screen.blit(text, newRect)
 
+                    self.drawInfoText()
                     positions = self.drawBoard(200, 150, 1100, 1100)
 
                     self.playerButtons = []
@@ -193,6 +195,20 @@ class main:
                         pygame.draw.circle(self.screen, color, (curX + (oneX/2), curY+(oneY/2)), oneX/1.5)
 
         return positions
+
+    def drawInfoText(self):
+        font = pygame.font.Font(pygame.font.get_default_font(), 70)
+
+        if self.muehle.playerTurn == "w":
+            displayText = "whites turn"
+        else:
+            displayText = "blacks turn"
+
+        text = font.render(displayText, True, self.headingColor)
+        newRect = text.get_rect()
+        newRect.centerx = self.windowWidth / 2
+        newRect.centery = self.windowHeight - 100
+        self.screen.blit(text, newRect)
 
 
 if __name__ == "__main__":
