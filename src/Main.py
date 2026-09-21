@@ -24,8 +24,8 @@ class main:
 
         self.muehle = Muehle.Muehle()
 
-        self.mainButtons = [Button.Button(self.screen, 150, 250, 1200, 200, (125, 90, 51), "1 Player"),
-                            Button.Button(self.screen, 150, 600, 1200, 200, (125, 90, 51), "2 Player"),
+        self.mainButtons = [Button.Button(self.screen, 150, 250, 1200, 200, (125, 90, 51), "Singleplayer"),
+                            Button.Button(self.screen, 150, 600, 1200, 200, (125, 90, 51), "Multiplayer"),
                             Button.Button(self.screen, 150, 950, 1200, 200, (125, 90, 51), "Quit")]
         self.playerButtons = []
 
@@ -46,12 +46,12 @@ class main:
                     if event.key == pygame.K_ESCAPE: # Quit the Game
                         if self.menu == "main":
                             self.running = False
-                        elif self.menu in ["1player", "2player"]:
+                        elif self.menu in ["singleplayer", "multiplayer"]:
                             self.menu = "main"
                     elif event.key == pygame.K_SPACE:
                         if self.menu == "main":
                             self.muehle.reset()
-                            self.menu = "1player"
+                            self.menu = "singleplayer"
 
             self.windowWidth = self.screen.get_width()
             self.windowHeight = self.screen.get_height()
@@ -82,17 +82,17 @@ class main:
 
                         if button.clicked(mx, my, mousePressedUp):
                             match button.onClick:
-                                case "1 Player":
+                                case "Singleplayer":
                                     self.muehle.reset()
-                                    self.menu = "1player"
-                                case "2 Player":
+                                    self.menu = "singleplayer"
+                                case "Multiplayer":
                                     self.muehle.reset()
-                                    self.menu = "2player"
+                                    self.menu = "multiplayer"
                                 case "Quit":
                                     self.running = False
-                case "1player":
+                case "singleplayer":
                     font = pygame.font.Font(pygame.font.get_default_font(), 70)
-                    text = font.render("1 Player", True, self.headingColor)
+                    text = font.render("Singleplayer", True, self.headingColor)
                     newRect = text.get_rect()
                     newRect.centerx = self.windowWidth / 2
                     newRect.centery = 70
@@ -120,9 +120,9 @@ class main:
                         if button.clicked(mx=mx, my=my, mouseClick=mousePressedUp):
                             self.muehle.update(positionList[int(button.onClick)][1], positionList[int(button.onClick)][0])
                             print(button.onClick)
-                case "2player":
+                case "multiplayer":
                     font = pygame.font.Font(pygame.font.get_default_font(), 70)
-                    text = font.render("2 Player", True, self.headingColor)
+                    text = font.render("Multiplayer", True, self.headingColor)
                     newRect = text.get_rect()
                     newRect.centerx = self.windowWidth / 2
                     newRect.centery = 70
