@@ -190,9 +190,15 @@ class main:
                     case "w":
                         color = (255, 255, 255)
                         pygame.draw.circle(self.screen, color, (curX+(oneX/2), curY+(oneY/2)), oneX/1.5)
+                    case "ws":
+                        color = (255, 255, 255)
+                        pygame.draw.circle(self.screen, color, (curX + (oneX / 2), curY + (oneY / 2)), oneX / 1.5)
                     case "b":
                         color = (10, 10, 10)
                         pygame.draw.circle(self.screen, color, (curX + (oneX/2), curY+(oneY/2)), oneX/1.5)
+                    case "bs":
+                        color = (10, 10, 10)
+                        pygame.draw.circle(self.screen, color, (curX + (oneX / 2), curY + (oneY / 2)), oneX / 1.5)
 
         return positions
 
