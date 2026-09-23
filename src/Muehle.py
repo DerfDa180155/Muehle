@@ -72,4 +72,10 @@ class Muehle:
                     if self.playerPieceCounter == [9, 9]:
                         self.phase = 1
             case 1: # move
-                pass
+                if self.board[y][x] == "w" and self.playerTurn == "w":
+                    self.select(x, y)
+                    self.togglePlayerTurn()
+                elif self.board[y][x] == "b" and self.playerTurn == "b":
+                    self.select(x, y)
+                    self.togglePlayerTurn()
+
