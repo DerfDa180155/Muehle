@@ -172,9 +172,7 @@ class main:
                         pygame.draw.rect(self.screen, color, (curX-1, curY+(oneY/2)-(thickness/2), oneX+2, thickness))
                     case "|":
                         pygame.draw.rect(self.screen, color, (curX+(oneX/2)-(thickness/2), curY-1, thickness, oneY+2))
-                    case "w":
-                        positions.append([curX, curY, curX + oneX, curY + oneY])
-                    case "b":
+                    case "w" | "ws" | "b" | "bs":
                         positions.append([curX, curY, curX + oneX, curY + oneY])
 
 
