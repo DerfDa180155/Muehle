@@ -56,6 +56,13 @@ class Muehle:
             self.board[y][x] = "bs"
             self.selectedPiece = [x, y]
 
+    def swap(self, x, y):
+        if self.selectedPiece != [-1, -1]:
+            temp = self.board[y][x]
+            self.board[y][x] = self.board[self.selectedPiece[1]][self.selectedPiece[0]].replace("s", "")
+            self.board[self.selectedPiece[1]][self.selectedPiece[0]] = temp
+            self.selectedPiece = [-1, -1]
+
     def togglePlayerTurn(self):
         if self.playerTurn == "w":
             self.playerTurn = "b"
@@ -72,10 +79,11 @@ class Muehle:
                     if self.playerPieceCounter == [9, 9]:
                         self.phase = 1
             case 1: # move
-                if self.board[y][x] == "w" and self.playerTurn == "w":
+                if self.board[y][x] == "w" and self.playerTurn == "w" and self.selectedPiece == [-1, -1]:
                     self.select(x, y)
-                    self.togglePlayerTurn()
-                elif self.board[y][x] == "b" and self.playerTurn == "b":
+                elif self.board[y][x] == "b" and self.playerTurn == "b" and self.selectedPiece == [-1, -1]:
                     self.select(x, y)
-                    self.togglePlayerTurn()
+                elif self.board[y][x] == "o":
+                    self.swap(x, y)
+
 
