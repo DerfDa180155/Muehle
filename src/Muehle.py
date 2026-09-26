@@ -83,7 +83,8 @@ class Muehle:
                     self.select(x, y)
                 elif self.board[y][x] == "b" and self.playerTurn == "b" and self.selectedPiece == [-1, -1]:
                     self.select(x, y)
-                elif self.board[y][x] == "o":
+                elif self.board[y][x] == "o" and self.selectedPiece != [-1, -1]:
                     self.swap(x, y)
+                    self.togglePlayerTurn()
 
 
