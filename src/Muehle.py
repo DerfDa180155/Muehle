@@ -63,6 +63,12 @@ class Muehle:
             self.board[self.selectedPiece[1]][self.selectedPiece[0]] = temp
             self.selectedPiece = [-1, -1]
 
+    def checkSwap(self, x, y):
+        if self.playerPieceCounter[0] == 3 and self.playerTurn == "w" or self.playerPieceCounter[1] == 3 and self.playerTurn == "b":
+            return True
+
+        return False
+
     def togglePlayerTurn(self):
         if self.playerTurn == "w":
             self.playerTurn = "b"
@@ -79,12 +85,13 @@ class Muehle:
                     if self.playerPieceCounter == [9, 9]:
                         self.phase = 1
             case 1: # move
-                if self.board[y][x] == "w" and self.playerTurn == "w" and self.selectedPiece == [-1, -1]:
-                    self.select(x, y)
-                elif self.board[y][x] == "b" and self.playerTurn == "b" and self.selectedPiece == [-1, -1]:
-                    self.select(x, y)
-                elif self.board[y][x] == "o" and self.selectedPiece != [-1, -1]:
-                    self.swap(x, y)
-                    self.togglePlayerTurn()
+                if self.selectedPiece == [-1, -1]:
+                    if self.board[y][x] == "w" and self.playerTurn == "w":
+                        self.select(x, y)
+                    elif self.board[y][x] == "b" and self.playerTurn == "b":
+                        self.select(x, y)
+                    elif self.board[y][x] == "o" and self.checkSwap(x, y):
+                        self.swap(x, y)
+                        self.togglePlayerTurn()
 
 
