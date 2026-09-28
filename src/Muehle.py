@@ -69,6 +69,9 @@ class Muehle:
 
         return False
 
+    def canTake(self, x, y):
+        return False
+
     def togglePlayerTurn(self):
         if self.playerTurn == "w":
             self.playerTurn = "b"
@@ -92,6 +95,7 @@ class Muehle:
                         self.select(x, y)
                     elif self.board[y][x] == "o" and self.checkSwap(x, y):
                         self.swap(x, y)
-                        self.togglePlayerTurn()
+                        if not self.canTake(x, y):
+                            self.togglePlayerTurn()
 
 
