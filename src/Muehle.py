@@ -70,7 +70,35 @@ class Muehle:
         return False
 
     def canTake(self, x, y):
-        return False
+        curX = x
+        curY = y
+
+        count = 1
+        while self.board[y][curX] != "" and curX+1 <= 12:
+            curX += 1
+            if self.board[y][curX] == self.board[x][y]:
+                count += 1
+
+        while self.board[y][curX] != "" and curX-1 >= 0:
+            curX -= 1
+            if self.board[y][curX] == self.board[x][y]:
+                count += 1
+
+        if count == 3:
+            return True
+
+        count = 1
+        while self.board[curY][x] != "" and curY + 1 <= 12:
+            curY += 1
+            if self.board[curY][x] == self.board[x][y]:
+                count += 1
+
+        while self.board[curY][x] != "" and curY - 1 >= 0:
+            curY -= 1
+            if self.board[curY][x] == self.board[x][y]:
+                count += 1
+
+        return count == 3
 
     def togglePlayerTurn(self):
         if self.playerTurn == "w":
