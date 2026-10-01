@@ -69,7 +69,7 @@ class Muehle:
         if self.playerPieceCounter[0] == 3 and self.playerTurn == "w" or self.playerPieceCounter[1] == 3 and self.playerTurn == "b":
             return True
 
-        return False
+        return True
 
     def canTake(self, x, y):
         curX = x
@@ -120,16 +120,17 @@ class Muehle:
             case 1: # move
                 if self.takeMove:
                     self.take(x, y)
+                    self.takeMove = False
                 elif self.selectedPiece == [-1, -1]:
                     if self.board[y][x] == "w" and self.playerTurn == "w":
                         self.select(x, y)
                     elif self.board[y][x] == "b" and self.playerTurn == "b":
                         self.select(x, y)
-                    elif self.board[y][x] == "o" and self.checkSwap(x, y):
-                        self.swap(x, y)
-                        if not self.canTake(x, y):
-                            self.togglePlayerTurn()
-                        else:
-                            self.takeMove = True
+                elif self.board[y][x] == "o" and self.checkSwap(x, y):
+                    self.swap(x, y)
+                    if not self.canTake(x, y):
+                        self.togglePlayerTurn()
+                    else:
+                        self.takeMove = True
 
 
