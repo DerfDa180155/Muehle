@@ -121,6 +121,7 @@ class Muehle:
                 if self.takeMove:
                     self.take(x, y)
                     self.takeMove = False
+                    self.togglePlayerTurn()
                 elif self.selectedPiece == [-1, -1]:
                     if self.board[y][x] == "w" and self.playerTurn == "w":
                         self.select(x, y)
