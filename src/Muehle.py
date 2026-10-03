@@ -50,13 +50,19 @@ class Muehle:
     def take(self, x, y):
         self.board[y][x] = "o"
 
-    def select(self, x, y):
+    def toggleSelect(self, x, y):
         if self.board[y][x] == "w":
             self.board[y][x] = "ws"
             self.selectedPiece = [x, y]
         elif self.board[y][x] == "b":
             self.board[y][x] = "bs"
             self.selectedPiece = [x, y]
+        elif self.board[y][x] == "ws":
+            self.board[y][x] = "w"
+            self.selectedPiece = [-1, -1]
+        elif self.board[y][x] == "bs":
+            self.board[y][x] = "b"
+            self.selectedPiece = [-1, -1]
 
     def swap(self, x, y):
         if self.selectedPiece != [-1, -1]:
@@ -122,12 +128,12 @@ class Muehle:
                     self.take(x, y)
                     self.takeMove = False
                     self.togglePlayerTurn()
-                elif self.selectedPiece == [-1, -1]:
-                    if self.board[y][x] == "w" and self.playerTurn == "w":
-                        self.select(x, y)
-                    elif self.board[y][x] == "b" and self.playerTurn == "b":
-                        self.select(x, y)
-                elif self.board[y][x] == "o" and self.checkSwap(x, y):
+
+                if self.board[y][x] in ["w", "ws"] and self.playerTurn == "w":
+                    self.toggleSelect(x, y)
+                elif self.board[y][x] in ["b", "bs"] and self.playerTurn == "b":
+                    self.toggleSelect(x, y)
+                elif self.board[y][x] == "o" and self.selectedPiece != [-1, -1] and self.checkSwap(x, y):
                     self.swap(x, y)
                     if not self.canTake(x, y):
                         self.togglePlayerTurn()
