@@ -52,9 +52,13 @@ class Muehle:
 
     def toggleSelect(self, x, y):
         if self.board[y][x] == "w":
+            if self.selectedPiece != [-1, -1]:
+                self.board[self.selectedPiece[1]][self.selectedPiece[0]] = "w"
             self.board[y][x] = "ws"
             self.selectedPiece = [x, y]
         elif self.board[y][x] == "b":
+            if self.selectedPiece != [-1, -1]:
+                self.board[self.selectedPiece[1]][self.selectedPiece[0]] = "b"
             self.board[y][x] = "bs"
             self.selectedPiece = [x, y]
         elif self.board[y][x] == "ws":
