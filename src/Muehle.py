@@ -88,12 +88,12 @@ class Muehle:
         count = 1
         while self.board[y][curX] != "" and curX+1 <= 12:
             curX += 1
-            if self.board[y][curX] == self.board[x][y]:
+            if self.board[y][curX] == self.board[y][x]:
                 count += 1
 
         while self.board[y][curX] != "" and curX-1 >= 0:
             curX -= 1
-            if self.board[y][curX] == self.board[x][y]:
+            if self.board[y][curX] == self.board[y][x]:
                 count += 1
 
         if count == 3:
@@ -102,12 +102,12 @@ class Muehle:
         count = 1
         while self.board[curY][x] != "" and curY + 1 <= 12:
             curY += 1
-            if self.board[curY][x] == self.board[x][y]:
+            if self.board[curY][x] == self.board[y][x]:
                 count += 1
 
         while self.board[curY][x] != "" and curY - 1 >= 0:
             curY -= 1
-            if self.board[curY][x] == self.board[x][y]:
+            if self.board[curY][x] == self.board[y][x]:
                 count += 1
 
         return count == 3
