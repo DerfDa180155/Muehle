@@ -119,29 +119,31 @@ class Muehle:
             self.playerTurn = "w"
 
     def update(self, x, y):
-        match self.phase:
-            case 0: # place
-                if self.board[y][x] == "o":
-                    self.placeCurrentPlayer(x, y)
+        if self.takeMove:
+            self.take(x, y)
+            self.takeMove = False
+            self.togglePlayerTurn()
+        else:
+            match self.phase:
+                case 0: # place
+                    if self.board[y][x] == "o":
+                        self.placeCurrentPlayer(x, y)
 
-                    self.togglePlayerTurn()
-                    if self.playerPieceCounter == [9, 9]:
-                        self.phase = 1
-            case 1: # move
-                if self.takeMove:
-                    self.take(x, y)
-                    self.takeMove = False
-                    self.togglePlayerTurn()
-
-                if self.board[y][x] in ["w", "ws"] and self.playerTurn == "w":
-                    self.toggleSelect(x, y)
-                elif self.board[y][x] in ["b", "bs"] and self.playerTurn == "b":
-                    self.toggleSelect(x, y)
-                elif self.board[y][x] == "o" and self.selectedPiece != [-1, -1] and self.checkSwap(x, y):
-                    self.swap(x, y)
-                    if not self.canTake(x, y):
                         self.togglePlayerTurn()
-                    else:
-                        self.takeMove = True
+                        if self.canTake(x, y):
+                            self.takeMove = True
+                        if self.playerPieceCounter == [9, 9]:
+                            self.phase = 1
+                case 1: # move
+                    if self.board[y][x] in ["w", "ws"] and self.playerTurn == "w":
+                        self.toggleSelect(x, y)
+                    elif self.board[y][x] in ["b", "bs"] and self.playerTurn == "b":
+                        self.toggleSelect(x, y)
+                    elif self.board[y][x] == "o" and self.selectedPiece != [-1, -1] and self.checkSwap(x, y):
+                        self.swap(x, y)
+                        if not self.canTake(x, y):
+                            self.togglePlayerTurn()
+                        else:
+                            self.takeMove = True
 
 
