@@ -129,9 +129,11 @@ class Muehle:
                     if self.board[y][x] == "o":
                         self.placeCurrentPlayer(x, y)
 
-                        self.togglePlayerTurn()
                         if self.canTake(x, y):
                             self.takeMove = True
+                        else:
+                            self.togglePlayerTurn()
+
                         if self.playerPieceCounter == [9, 9]:
                             self.phase = 1
                 case 1: # move
