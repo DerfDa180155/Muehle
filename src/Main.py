@@ -130,17 +130,26 @@ class main:
 
                     self.drawInfoText()
                     positions = self.drawBoard(200, 150, 1100, 1100)
+                    positionList = [
+                        (0, 0), (0, 6), (0, 12),
+                        (2, 2), (2, 6), (2, 10),
+                        (4, 4), (4, 6), (4, 8),
+                        (6, 0), (6, 2), (6, 4), (6, 8), (6, 10), (6, 12),
+                        (8, 4), (8, 6), (8, 8),
+                        (10, 2), (10, 6), (10, 10),
+                        (12, 0), (12, 6), (12, 12)
+                    ]
 
                     self.playerButtons = []
                     counter = 0
                     for position in positions:
                         self.playerButtons.append(
-                            Button.Button(self.screen, position[0], position[1], position[2] - position[0],
-                                          position[3] - position[1], (255, 255, 255), str(counter)))
+                            Button.Button(self.screen, position[0], position[1], position[2]-position[0], position[3]-position[1], (255, 255, 255), str(counter)))
                         counter += 1
 
                     for button in self.playerButtons:
                         if button.clicked(mx=mx, my=my, mouseClick=mousePressedUp):
+                            self.muehle.update(positionList[int(button.onClick)][1], positionList[int(button.onClick)][0])
                             print(button.onClick)
 
             pygame.display.flip()
