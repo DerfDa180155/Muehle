@@ -79,7 +79,10 @@ class Muehle:
         if self.playerPieceCounter[0] == 3 and self.playerTurn == "w" or self.playerPieceCounter[1] == 3 and self.playerTurn == "b":
             return True
 
-        return True
+
+
+
+        return False
 
     def canTake(self, x, y):
         curX = x
@@ -91,6 +94,7 @@ class Muehle:
             if self.board[y][curX] == self.board[y][x]:
                 count += 1
 
+        curX = x
         while self.board[y][curX] != "" and curX-1 >= 0:
             curX -= 1
             if self.board[y][curX] == self.board[y][x]:
@@ -105,6 +109,7 @@ class Muehle:
             if self.board[curY][x] == self.board[y][x]:
                 count += 1
 
+        curY = y
         while self.board[curY][x] != "" and curY - 1 >= 0:
             curY -= 1
             if self.board[curY][x] == self.board[y][x]:
