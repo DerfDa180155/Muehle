@@ -79,8 +79,11 @@ class Muehle:
         if self.playerPieceCounter[0] == 3 and self.playerTurn == "w" or self.playerPieceCounter[1] == 3 and self.playerTurn == "b":
             return True
 
+        curX = self.selectedPiece[0]
+        curY = self.selectedPiece[1]
 
-
+        if x == curX or y == curY:
+            pass
 
         return False
 
