@@ -76,13 +76,18 @@ class Muehle:
             self.selectedPiece = [-1, -1]
 
     def checkSwap(self, x, y):
+        if self.board[y][x] != "o":
+            return  False
+
         if self.playerPieceCounter[0] == 3 and self.playerTurn == "w" or self.playerPieceCounter[1] == 3 and self.playerTurn == "b":
             return True
 
         curX = self.selectedPiece[0]
         curY = self.selectedPiece[1]
 
-        if x == curX or y == curY:
+        if x == curX:
+            pass
+        elif y == curY:
             pass
 
         return False
