@@ -85,8 +85,12 @@ class Muehle:
         curX = self.selectedPiece[0]
         curY = self.selectedPiece[1]
 
+        check = False
         if x == curX:
-            pass
+            while not check and curY >= 0:
+                curY -= 1
+                if self.board[curY][x] == self.board[y][x]:
+                    return True
         elif y == curY:
             pass
 
