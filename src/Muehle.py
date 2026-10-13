@@ -89,7 +89,12 @@ class Muehle:
         if x == curX:
             while not check and curY >= 0:
                 curY -= 1
-                if self.board[curY][x] == self.board[y][x]:
+                if self.board[curY][x] == "o":
+                    return True
+            curY = self.selectedPiece[1]
+            while not check and curY <= 12:
+                curY += 1
+                if self.board[curY][x] == "o":
                     return True
         elif y == curY:
             pass
