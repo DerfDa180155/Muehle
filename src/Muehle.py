@@ -97,8 +97,15 @@ class Muehle:
                 if self.board[curY][x] == "o":
                     return True
         elif y == curY:
-            pass
-
+            while not check and curX >= 0:
+                curX -= 1
+                if self.board[y][curX] == "o":
+                    return True
+            curX = self.selectedPiece[0]
+            while not check and curX <= 12:
+                curX += 1
+                if self.board[y][curX] == "o":
+                    return True
         return False
 
     def canTake(self, x, y):
