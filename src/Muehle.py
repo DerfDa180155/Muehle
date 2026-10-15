@@ -148,7 +148,7 @@ class Muehle:
             self.playerTurn = "w"
 
     def update(self, x, y):
-        if self.takeMove:
+        if self.takeMove and self.board[y][x] not in [self.playerTurn, "o"]:
             self.take(x, y)
             self.takeMove = False
             self.togglePlayerTurn()
