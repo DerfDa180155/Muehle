@@ -8,6 +8,7 @@ class Muehle:
         self.phase = 0
         self.playerTurn = "w"
 
+        self.playerPieceCounterTotal = [0, 0]
         self.playerPieceCounter = [0, 0]
         self.selectedPiece = [-1, -1]
         self.takeMove = False
@@ -33,6 +34,7 @@ class Muehle:
         self.phase = 0
         self.playerTurn = "w"
 
+        self.playerPieceCounterTotal = [0, 0]
         self.playerPieceCounter = [0, 0]
         self.selectedPiece = [-1, -1]
         self.takeMove = False
@@ -44,8 +46,10 @@ class Muehle:
         self.place(x, y, self.playerTurn)
         if self.playerTurn == "w":
             self.playerPieceCounter[0] += 1
+            self.playerPieceCounterTotal[0] += 1
         else:
             self.playerPieceCounter[1] += 1
+            self.playerPieceCounterTotal[1] += 1
 
     def take(self, x, y):
         self.board[y][x] = "o"
@@ -163,7 +167,7 @@ class Muehle:
                         else:
                             self.togglePlayerTurn()
 
-                        if self.playerPieceCounter == [9, 9]:
+                        if self.playerPieceCounterTotal == [9, 9]:
                             self.phase = 1
                 case 1: # move
                     if self.board[y][x] in ["w", "ws"] and self.playerTurn == "w":
