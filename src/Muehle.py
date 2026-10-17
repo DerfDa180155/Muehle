@@ -80,7 +80,7 @@ class Muehle:
             self.selectedPiece = [-1, -1]
 
     def checkSwap(self, x, y):
-        if self.board[y][x] != "o":
+        if self.board[y][x] != "o" or self.phase == 0:
             return  False
 
         if self.playerPieceCounter[0] == 3 and self.playerTurn == "w" or self.playerPieceCounter[1] == 3 and self.playerTurn == "b":
