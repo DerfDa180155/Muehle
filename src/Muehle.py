@@ -81,7 +81,7 @@ class Muehle:
 
     def checkSwap(self, x, y):
         if self.board[y][x] != "o" or self.phase == 0:
-            return  False
+            return False
 
         if self.playerPieceCounter[0] == 3 and self.playerTurn == "w" or self.playerPieceCounter[1] == 3 and self.playerTurn == "b":
             return True
@@ -152,10 +152,11 @@ class Muehle:
             self.playerTurn = "w"
 
     def update(self, x, y):
-        if self.takeMove and self.board[y][x] not in [self.playerTurn, "o"]:
-            self.take(x, y)
-            self.takeMove = False
-            self.togglePlayerTurn()
+        if self.takeMove:
+            if self.board[y][x] not in [self.playerTurn, "o"]:
+                self.take(x, y)
+                self.takeMove = False
+                self.togglePlayerTurn()
         else:
             match self.phase:
                 case 0: # place
