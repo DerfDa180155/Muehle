@@ -145,12 +145,6 @@ class Muehle:
 
         return count == 3
 
-    def canTakePiece(self, x, y):
-        curX = x
-        curY = y
-
-
-        return True
 
     def togglePlayerTurn(self):
         if self.playerTurn == "w":
@@ -160,7 +154,7 @@ class Muehle:
 
     def update(self, x, y):
         if self.takeMove:
-            if self.board[y][x] not in [self.playerTurn, "o"] and self.canTakePiece(x, y):
+            if self.board[y][x] not in [self.playerTurn, "o"] and not self.canTake(x, y):
                 self.take(x, y)
                 self.takeMove = False
                 self.togglePlayerTurn()
