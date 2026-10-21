@@ -158,6 +158,10 @@ class Muehle:
                 self.take(x, y)
                 self.takeMove = False
                 self.togglePlayerTurn()
+                if self.playerTurn == "w":
+                    self.playerPieceCounter[0] -= 1
+                elif self.playerTurn == "b":
+                    self.playerPieceCounter[1] -= 1
         else:
             match self.phase:
                 case 0: # place
