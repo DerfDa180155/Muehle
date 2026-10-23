@@ -160,11 +160,11 @@ class Muehle:
                 self.togglePlayerTurn()
                 if self.playerTurn == "w":
                     self.playerPieceCounter[0] -= 1
-                    if self.playerPieceCounter[0] == 2:
+                    if self.playerPieceCounter[0] == 2 and self.phase == 2:
                         self.phase = 3
                 elif self.playerTurn == "b":
                     self.playerPieceCounter[1] -= 1
-                    if self.playerPieceCounter[1] == 2:
+                    if self.playerPieceCounter[1] == 2 and self.phase == 2:
                         self.phase = 3
         else:
             match self.phase:
