@@ -145,6 +145,8 @@ class Muehle:
 
         return count == 3
 
+    def canTakeAnyPiece(self):
+        return True
 
     def togglePlayerTurn(self):
         if self.playerTurn == "w":
@@ -172,7 +174,7 @@ class Muehle:
                     if self.board[y][x] == "o":
                         self.placeCurrentPlayer(x, y)
 
-                        if self.canTake(x, y):
+                        if self.canTake(x, y) and self.canTakeAnyPiece():
                             self.takeMove = True
                         else:
                             self.togglePlayerTurn()
@@ -188,7 +190,7 @@ class Muehle:
                         self.swap(x, y)
                         if not self.canTake(x, y):
                             self.togglePlayerTurn()
-                        else:
+                        elif self.canTakeAnyPiece():
                             self.takeMove = True
 
 
