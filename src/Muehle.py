@@ -160,6 +160,9 @@ class Muehle:
         elif self.playerTurn == "b":
             self.playerTurn = "w"
 
+    def isGameOver(self):
+        return False
+
     def update(self, x, y):
         if self.takeMove:
             if self.board[y][x] not in [self.playerTurn, "o"] and not self.canTake(x, y):
@@ -169,11 +172,11 @@ class Muehle:
                 if self.playerTurn == "w":
                     self.playerPieceCounter[0] -= 1
                     if self.playerPieceCounter[0] == 2 and self.phase == 2:
-                        self.phase = 3
+                        self.phase = 2
                 elif self.playerTurn == "b":
                     self.playerPieceCounter[1] -= 1
                     if self.playerPieceCounter[1] == 2 and self.phase == 2:
-                        self.phase = 3
+                        self.phase = 2
         else:
             match self.phase:
                 case 0: # place
@@ -198,5 +201,6 @@ class Muehle:
                             self.togglePlayerTurn()
                         elif self.canTakeAnyPiece():
                             self.takeMove = True
-
+                case 2: # over
+                    pass
 
