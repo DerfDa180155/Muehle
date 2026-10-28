@@ -161,6 +161,10 @@ class Muehle:
             self.playerTurn = "w"
 
     def isGameOver(self):
+        if self.phase > 0:
+            if self.phase >= 2 or self.playerPieceCounter[0] == 3 and self.playerTurn == "b" or self.playerPieceCounter[1] == 3 and self.playerTurn == "w":
+                self.phase = 2
+                return True
         return False
 
     def update(self, x, y):
@@ -171,11 +175,11 @@ class Muehle:
                 self.togglePlayerTurn()
                 if self.playerTurn == "w":
                     self.playerPieceCounter[0] -= 1
-                    if self.playerPieceCounter[0] == 2 and self.phase == 2:
+                    if self.playerPieceCounter[0] == 2 and self.phase == 1:
                         self.phase = 2
                 elif self.playerTurn == "b":
                     self.playerPieceCounter[1] -= 1
-                    if self.playerPieceCounter[1] == 2 and self.phase == 2:
+                    if self.playerPieceCounter[1] == 2 and self.phase == 1:
                         self.phase = 2
         else:
             match self.phase:
@@ -200,7 +204,8 @@ class Muehle:
                         if not self.canTake(x, y):
                             self.togglePlayerTurn()
                         elif self.canTakeAnyPiece():
-                            self.takeMove = True
+                            if not self.isGameOver():
+                                self.takeMove = True
                 case 2: # over
                     pass
 
