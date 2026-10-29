@@ -13,6 +13,8 @@ class Muehle:
         self.selectedPiece = [-1, -1]
         self.takeMove = False
 
+        self.takeOver = False
+
     def generateEmptyBoard(self):
         return [["o", "-", "-", "-", "-", "-", "o", "-", "-", "-", "-", "-", "o"],
                 ["|", "", "", "", "", "", "|", "", "", "", "", "", "|"],
@@ -38,6 +40,8 @@ class Muehle:
         self.playerPieceCounter = [0, 0]
         self.selectedPiece = [-1, -1]
         self.takeMove = False
+
+        self.takeOver = False
 
     def place(self, x, y, color):
         self.board[y][x] = color
@@ -164,7 +168,9 @@ class Muehle:
         if self.phase > 0:
             if self.phase >= 2 or self.playerPieceCounter[0] == 3 and self.playerTurn == "b" or self.playerPieceCounter[1] == 3 and self.playerTurn == "w":
                 self.phase = 2
+                self.takeOver = True
                 return True
+        self.takeOver = False
         return False
 
     def update(self, x, y):
