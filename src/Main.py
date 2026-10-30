@@ -110,6 +110,9 @@ class main:
                         (12, 0), (12, 6), (12, 12)
                     ]
 
+                    if self.muehle.gameOver:
+                        self.drawGameOver()
+
                     self.playerButtons = []
                     counter = 0
                     for position in positions:
@@ -222,6 +225,9 @@ class main:
         newRect.centerx = self.windowWidth / 2
         newRect.centery = self.windowHeight - 100
         self.screen.blit(text, newRect)
+
+    def drawGameOver(self):
+        print("gameover")
 
 
 if __name__ == "__main__":
