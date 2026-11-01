@@ -227,6 +227,8 @@ class main:
         self.screen.blit(text, newRect)
 
     def drawGameOver(self):
+        pygame.draw.rect(self.screen, self.baseColor, (self.windowWidth/4, self.windowHeight/4, self.windowWidth/2, self.windowHeight/2))
+
         font = pygame.font.Font(pygame.font.get_default_font(), 70)
 
         displayText = "GameOver"
