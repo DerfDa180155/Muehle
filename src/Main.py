@@ -116,6 +116,9 @@ class main:
 
                         for button in self.gameOverButtons:
                             button.draw()
+                            if button.clicked(mx=mx, my=my, mouseClick=mousePressedUp):
+                                if button.onClick == "PlayAgain":
+                                    self.muehle.reset()
 
                     self.playerButtons = []
                     counter = 0
