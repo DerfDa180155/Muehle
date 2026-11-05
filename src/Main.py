@@ -28,7 +28,7 @@ class main:
                             Button.Button(self.screen, 150, 600, 1200, 200, (125, 90, 51), "Multiplayer"),
                             Button.Button(self.screen, 150, 950, 1200, 200, (125, 90, 51), "Quit")]
         self.playerButtons = []
-        self.gameOverButtons = [Button.Button(self.screen, 150, 250, 1200, 200, (125, 90, 51), "PlayAgain")]
+        self.gameOverButtons = [Button.Button(self.screen, 500, 600, 500, 150, (125, 90, 51), "PlayAgain")]
 
 
         self.backgroundColor = (133, 101, 66)
