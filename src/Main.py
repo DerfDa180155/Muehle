@@ -238,7 +238,13 @@ class main:
 
         pygame.draw.rect(self.screen, self.baseColor, (self.windowWidth/4, self.windowHeight/4, self.windowWidth/2, self.windowHeight/3))
 
-        displayText = "GameOver"
+        displayText = "Game Over"
+
+        if self.muehle.playerPieceCounter[1] <= 3:
+            displayText += "\nWhite Wins"
+        else:
+            displayText += "\nBlack Wins"
+
         text = font.render(displayText, True, self.headingColor)
         newRect = text.get_rect()
         newRect.centerx = self.windowWidth / 2
