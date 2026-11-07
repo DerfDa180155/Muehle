@@ -28,7 +28,8 @@ class main:
                             Button.Button(self.screen, 150, 600, 1200, 200, (125, 90, 51), "Multiplayer"),
                             Button.Button(self.screen, 150, 950, 1200, 200, (125, 90, 51), "Quit")]
         self.playerButtons = []
-        self.gameOverButtons = [Button.Button(self.screen, 500, 600, 500, 150, (125, 90, 51), "PlayAgain")]
+        self.gameOverButtons = [Button.Button(self.screen, 500, 600, 500, 150, (125, 90, 51), "PlayAgain"),
+                                Button.Button(self.screen, 500, 600, 500, 150, (125, 90, 51), "MainMenu")]
 
 
         self.backgroundColor = (133, 101, 66)
@@ -117,8 +118,11 @@ class main:
                         for button in self.gameOverButtons:
                             button.draw()
                             if button.clicked(mx=mx, my=my, mouseClick=mousePressedUp):
-                                if button.onClick == "PlayAgain":
-                                    self.muehle.reset()
+                                match button.onClick:
+                                    case "PlayAgain":
+                                        self.muehle.reset()
+                                    case "MainMenu":
+                                        self.menu = "main"
 
                     self.playerButtons = []
                     counter = 0
