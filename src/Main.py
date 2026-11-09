@@ -154,11 +154,22 @@ class main:
                         (12, 0), (12, 6), (12, 12)
                     ]
 
+                    if self.muehle.gameOver:
+                        self.drawGameOver()
+
+                        for button in self.gameOverButtons:
+                            button.draw()
+                            if button.clicked(mx=mx, my=my, mouseClick=mousePressedUp):
+                                match button.onClick:
+                                    case "PlayAgain":
+                                        self.muehle.reset()
+                                    case "MainMenu":
+                                        self.menu = "main"
+
                     self.playerButtons = []
                     counter = 0
                     for position in positions:
-                        self.playerButtons.append(
-                            Button.Button(self.screen, position[0], position[1], position[2]-position[0], position[3]-position[1], (255, 255, 255), str(counter)))
+                        self.playerButtons.append(Button.Button(self.screen, position[0], position[1], position[2]-position[0], position[3]-position[1], (255, 255, 255), str(counter)))
                         counter += 1
 
                     for button in self.playerButtons:
