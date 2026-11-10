@@ -132,7 +132,10 @@ class main:
 
                     for button in self.playerButtons:
                         if button.clicked(mx=mx, my=my, mouseClick=mousePressedUp):
+                            temp = self.muehle.playerTurn
                             self.muehle.update(positionList[int(button.onClick)][1], positionList[int(button.onClick)][0])
+                            if temp == self.muehle.playerTurn:
+                                self.muehle.calcBotMove()
                             print(button.onClick)
                 case "multiplayer":
                     font = pygame.font.Font(pygame.font.get_default_font(), 70)

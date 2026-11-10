@@ -215,3 +215,5 @@ class Muehle:
                 case 2: # over
                     pass
 
+    def calcBotMove(self):
+        pass
