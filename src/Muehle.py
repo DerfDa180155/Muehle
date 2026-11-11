@@ -216,4 +216,5 @@ class Muehle:
                     pass
 
     def calcBotMove(self):
-        pass
+        print("test")
+        self.togglePlayerTurn()

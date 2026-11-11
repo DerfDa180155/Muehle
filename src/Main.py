@@ -134,7 +134,7 @@ class main:
                         if button.clicked(mx=mx, my=my, mouseClick=mousePressedUp):
                             temp = self.muehle.playerTurn
                             self.muehle.update(positionList[int(button.onClick)][1], positionList[int(button.onClick)][0])
-                            if temp == self.muehle.playerTurn:
+                            if temp != self.muehle.playerTurn:
                                 self.muehle.calcBotMove()
                             print(button.onClick)
                 case "multiplayer":
