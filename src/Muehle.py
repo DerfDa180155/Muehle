@@ -55,6 +55,11 @@ class Muehle:
             self.playerPieceCounter[1] += 1
             self.playerPieceCounterTotal[1] += 1
 
+    def placeRandom(self):
+        x = 0
+        y = 0
+        self.placeCurrentPlayer(x, y)
+
     def take(self, x, y):
         self.board[y][x] = "o"
 
@@ -217,4 +222,8 @@ class Muehle:
 
     def calcBotMove(self):
         print("test")
-        self.togglePlayerTurn()
+        if self.phase == 0:
+            self.placeRandom()
+            self.togglePlayerTurn()
+        elif self.phase == 1:
+            pass
