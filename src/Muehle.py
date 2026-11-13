@@ -1,3 +1,5 @@
+import random
+
 import pygame
 
 
@@ -56,8 +58,13 @@ class Muehle:
             self.playerPieceCounterTotal[1] += 1
 
     def placeRandom(self):
-        x = 0
-        y = 0
+        x = random.randint(0, 12)
+        y = random.randint(0, 12)
+
+        while self.board[y][x] != "o":
+            x = random.randint(0, 12)
+            y = random.randint(0, 12)
+
         self.placeCurrentPlayer(x, y)
 
     def take(self, x, y):
