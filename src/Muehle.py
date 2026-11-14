@@ -232,5 +232,7 @@ class Muehle:
         if self.phase == 0:
             self.placeRandom()
             self.togglePlayerTurn()
+            if self.playerPieceCounterTotal == [9, 9]:
+                self.phase = 1
         elif self.phase == 1:
             pass
