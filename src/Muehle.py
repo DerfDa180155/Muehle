@@ -67,6 +67,9 @@ class Muehle:
 
         self.placeCurrentPlayer(x, y)
 
+    def moveRandom(self):
+        pass
+
     def take(self, x, y):
         self.board[y][x] = "o"
 
@@ -235,4 +238,5 @@ class Muehle:
             if self.playerPieceCounterTotal == [9, 9]:
                 self.phase = 1
         elif self.phase == 1:
-            pass
+            self.moveRandom()
+            self.togglePlayerTurn()
