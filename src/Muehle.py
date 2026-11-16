@@ -68,7 +68,12 @@ class Muehle:
         self.placeCurrentPlayer(x, y)
 
     def moveRandom(self):
-        pass
+        x = random.randint(0, 12)
+        y = random.randint(0, 12)
+
+        while self.board[y][x] != self.playerTurn:
+            x = random.randint(0, 12)
+            y = random.randint(0, 12)
 
     def take(self, x, y):
         self.board[y][x] = "o"
@@ -231,7 +236,6 @@ class Muehle:
                     pass
 
     def calcBotMove(self):
-        print("test")
         if self.phase == 0:
             self.placeRandom()
             self.togglePlayerTurn()
