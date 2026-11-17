@@ -68,12 +68,23 @@ class Muehle:
         self.placeCurrentPlayer(x, y)
 
     def moveRandom(self):
-        x = random.randint(0, 12)
-        y = random.randint(0, 12)
-
-        while self.board[y][x] != self.playerTurn:
+        moved = False
+        while not moved:
             x = random.randint(0, 12)
             y = random.randint(0, 12)
+
+            while self.board[y][x] != self.playerTurn:
+                x = random.randint(0, 12)
+                y = random.randint(0, 12)
+
+            self.toggleSelect(x, y)
+
+            newX = x
+            newY = y
+            if self.checkSwap(newX, newY):
+                self.swap(newX, newY)
+                moved = True
+
 
     def take(self, x, y):
         self.board[y][x] = "o"
