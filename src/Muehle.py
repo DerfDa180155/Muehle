@@ -1,4 +1,5 @@
 import random
+from sitecustomize import position
 
 import pygame
 
@@ -79,11 +80,13 @@ class Muehle:
 
             self.toggleSelect(x, y)
 
-            newX = x
-            newY = y
-            if self.checkSwap(newX, newY):
-                self.swap(newX, newY)
-                moved = True
+            positions = [[x-1, y-1], [x, y-1], [x+1, y-1], [x-1, y], [x+1, y], [x-1, y+1], [x, y+1], [x+1, y+1]]
+            for pos in positions:
+                newX = pos[0]
+                newY = pos[1]
+                if self.checkSwap(newX, newY) and not moved:
+                    self.swap(newX, newY)
+                    moved = True
 
 
     def take(self, x, y):
