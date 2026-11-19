@@ -118,6 +118,9 @@ class Muehle:
             self.selectedPiece = [-1, -1]
 
     def checkSwap(self, x, y):
+        if x < 0 or y < 0 or x > 12 or y > 12:
+            return False
+
         if self.board[y][x] != "o" or self.phase == 0:
             return False
 
