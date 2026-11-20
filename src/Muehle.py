@@ -80,10 +80,12 @@ class Muehle:
 
             self.toggleSelect(x, y)
 
-            positions = [[x-1, y-1], [x, y-1], [x+1, y-1], [x-1, y], [x+1, y], [x-1, y+1], [x, y+1], [x+1, y+1]]
+            positions = [[x, y-1], [x, y+1], [x-1, y], [x+1, y]]
             for pos in positions:
                 newX = pos[0]
                 newY = pos[1]
+                print(self.board)
+                print(str(pos) + str(self.checkSwap(newX, newY)))
                 if self.checkSwap(newX, newY) and not moved:
                     self.swap(newX, newY)
                     moved = True
