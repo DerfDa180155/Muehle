@@ -80,7 +80,7 @@ class Muehle:
 
             self.toggleSelect(x, y)
 
-            positions = [[x, y-1], [x, y+1], [x-1, y], [x+1, y]]
+            positions = self.getAvailableMoves(x, y)
             for pos in positions:
                 newX = pos[0]
                 newY = pos[1]
@@ -90,6 +90,11 @@ class Muehle:
                     self.swap(newX, newY)
                     moved = True
 
+    def getAvailableMoves(self, x, y):
+
+
+
+        return []
 
     def take(self, x, y):
         self.board[y][x] = "o"
