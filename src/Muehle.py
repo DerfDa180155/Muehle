@@ -91,10 +91,19 @@ class Muehle:
                     moved = True
 
     def getAvailableMoves(self, x, y):
+        positions = []
+        newX = x
+        newY = y
+
+        if x-1 > 0:
+            newX -= 1
+            while newX >= 0 and self.board[y][newX] == "-":
+                newX -= 1
+                if self.board[y][newX] == "o":
+                    positions.append([newX, newY])
 
 
-
-        return []
+        return positions
 
     def take(self, x, y):
         self.board[y][x] = "o"
