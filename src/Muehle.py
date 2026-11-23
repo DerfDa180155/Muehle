@@ -102,6 +102,14 @@ class Muehle:
                 if self.board[y][newX] == "o":
                     positions.append([newX, newY])
 
+        newX = x
+        if x+1 < 12:
+            newX += 1
+            while newX >= 0 and self.board[y][newX] == "-":
+                newX += 1
+                if self.board[y][newX] == "o":
+                    positions.append([newX, newY])
+
 
         return positions
 
