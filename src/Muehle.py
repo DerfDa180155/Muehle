@@ -100,7 +100,7 @@ class Muehle:
             while newX >= 0 and self.board[y][newX] == "-":
                 newX -= 1
                 if self.board[y][newX] == "o":
-                    positions.append([newX, newY])
+                    positions.append([newX, y])
 
         newX = x
         if x+1 < 12:
@@ -108,7 +108,22 @@ class Muehle:
             while newX >= 0 and self.board[y][newX] == "-":
                 newX += 1
                 if self.board[y][newX] == "o":
-                    positions.append([newX, newY])
+                    positions.append([newX, y])
+
+        if y-1 > 0:
+            newY -= 1
+            while newY >= 0 and self.board[newY][x] == "|":
+                newY -= 1
+                if self.board[newY][x] == "o":
+                    positions.append([x, newY])
+
+        newY = y
+        if y+1 < 12:
+            newY += 1
+            while newY >= 0 and self.board[newY][x] == "|":
+                newY += 1
+                if self.board[newY][x] == "o":
+                    positions.append([x, newY])
 
 
         return positions
