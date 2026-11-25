@@ -68,6 +68,8 @@ class Muehle:
 
         self.placeCurrentPlayer(x, y)
 
+        return [x, y]
+
     def moveRandom(self):
         moved = False
         while not moved:
@@ -88,6 +90,7 @@ class Muehle:
                 print(str(pos) + str(self.checkSwap(newX, newY)))
                 if self.checkSwap(newX, newY) and not moved:
                     self.swap(newX, newY)
+                    return [newX, newY]
                     moved = True
 
     def getAvailableMoves(self, x, y):
@@ -293,10 +296,14 @@ class Muehle:
 
     def calcBotMove(self):
         if self.phase == 0:
-            self.placeRandom()
+            pos = self.placeRandom()
+            if self.canTake(pos[0], pos[1]) and self.canTakeAnyPiece():
+                print("take")
             self.togglePlayerTurn()
             if self.playerPieceCounterTotal == [9, 9]:
                 self.phase = 1
         elif self.phase == 1:
-            self.moveRandom()
+            pos = self.moveRandom()
+            if self.canTake(pos[0], pos[1]) and self.canTakeAnyPiece():
+                print("take")
             self.togglePlayerTurn()
