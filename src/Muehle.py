@@ -131,6 +131,10 @@ class Muehle:
 
         return positions
 
+    def takeRandom(self):
+        x = random.randint(0, 12)
+        y = random.randint(0, 12)
+
     def take(self, x, y):
         self.board[y][x] = "o"
 
@@ -298,12 +302,12 @@ class Muehle:
         if self.phase == 0:
             pos = self.placeRandom()
             if self.canTake(pos[0], pos[1]) and self.canTakeAnyPiece():
-                print("take")
+                self.takeRandom()
             self.togglePlayerTurn()
             if self.playerPieceCounterTotal == [9, 9]:
                 self.phase = 1
         elif self.phase == 1:
             pos = self.moveRandom()
             if self.canTake(pos[0], pos[1]) and self.canTakeAnyPiece():
-                print("take")
+                self.takeRandom()
             self.togglePlayerTurn()
