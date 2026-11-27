@@ -132,8 +132,18 @@ class Muehle:
         return positions
 
     def takeRandom(self):
-        x = random.randint(0, 12)
-        y = random.randint(0, 12)
+        taken = False
+        while not taken:
+            x = random.randint(0, 12)
+            y = random.randint(0, 12)
+
+            while self.board[y][x] in [self.playerTurn, "o", "-", "|", ""]:
+                x = random.randint(0, 12)
+                y = random.randint(0, 12)
+
+            if not self.canTake(x, y):
+                self.take(x, y)
+                taken = True
 
     def take(self, x, y):
         self.board[y][x] = "o"
